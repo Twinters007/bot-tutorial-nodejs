@@ -7,7 +7,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]);
       //botRegex = /^\/cool guy$/;
 
-  if(request.text && (request.text.indexOf('c')>-1)) {//botRegex.test(request.text))
+  if(request.text && (request.text.indexOf('c')>-1) || ()) {//botRegex.test(request.text))
 
     this.res.writeHead(200);
     postMessage(request.text);
@@ -22,7 +22,7 @@ function respond() {
 function postMessage(message) {
   var botResponse, options, body, botReq;
 
-  botResponse = message.replace(/'c'/g, 'b');
+  botResponse = message.replace(/c/g, 'b');
 
   options = {
     hostname: 'api.groupme.com',
