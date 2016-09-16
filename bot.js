@@ -22,8 +22,7 @@ function respond() {
 function postMessage(message) {
   var botResponse, options, body, botReq;
 
-  botResponse = message.replace(/c/g, 'b').replace(/C/g, 'B').replace(/mariah/g, 'mom');
-
+  botResponse = message.replace(/c/gi, 'b').replace(/mariah/gi, 'mom');
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
