@@ -5,11 +5,12 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy$/;
+      //botRegex = /^\/cool guy$/;
 
-  if(request.text && request.text.indexOf('c') >  -1){//botRegex.test(request.text)) {
+  if(request.text && (request.text.indexOf('c')>-1) {//botRegex.test(request.text))
+
     this.res.writeHead(200);
-    postMessage(request);
+    postMessage(request.text);
     this.res.end();
   } else {
     console.log("don't care");
