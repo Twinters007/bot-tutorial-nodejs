@@ -1,20 +1,25 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
-APOD        = require('node-nasa-pic-of-day')
+APOD        = require('node-apod')
 
 var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
       //botRegex = /^\/cool guy$/;
+
+  var url;
   console.log(request);
-  if(request.text.indexOf('#apod')>-1){
-    apod = new APOD({
-      key: 'FPEarLkn8Rlt1wPk5ajUp270WX5fu2flRZvMV5ck'
-    });
-    var url;
-    var imagedata = apod.getAllData(function(body){
-      url = body.url;});
+  if(request.text.indexOf('#apod')> -1){
+    var APOD = require('node-apod');
+    var apod = new APOD('FPEarLkn8Rlt1wPk5ajUp270WX5fu2flRZvMV5ck'); // You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key
+
+    apod.get({
+      LANG: "en_us", // default en_us
+      DATE: this.getCurrentDate() // default today
+  }, function(err, data) {
+      url = data.url;
+  });
       this.res.writeHead(200);
       postMessage(url);
       this.res.end();

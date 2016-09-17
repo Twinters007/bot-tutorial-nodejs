@@ -7,10 +7,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "director": "",
     "cool-ascii-faces": "~1.3.x",
-    "node-nasa-pic-of-day": "",
-    "-g n": ""
+    "director": "",
+    "node-apod": "^1.6.4"
   },
   "engines": {
     "node": "0.10.x"
