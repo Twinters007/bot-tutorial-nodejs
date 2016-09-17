@@ -1,6 +1,5 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
-APOD        = require('node-apod')
 
 var botID = process.env.BOT_ID;
 
@@ -11,7 +10,6 @@ function respond() {
   var url;
   console.log(request);
   if(request.text.indexOf('#apod')> -1){
-    var APOD = require('node-apod');
     var apod = new APOD('FPEarLkn8Rlt1wPk5ajUp270WX5fu2flRZvMV5ck'); // You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key
 
     apod.get({
