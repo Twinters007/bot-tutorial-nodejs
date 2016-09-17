@@ -1,5 +1,6 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
+APOD        = require('node-nasa-pic-of-day')
 
 var botID = process.env.BOT_ID;
 
@@ -7,12 +8,18 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]);
       //botRegex = /^\/cool guy$/;
   console.log(request);
-  if(request.text && (request.text.toLowerCase().indexOf('c')>-1 || request.text.toLowerCase().indexOf('mariah')>-1)) {//botRegex.test(request.text))
-
-    this.res.writeHead(200);
-    postMessage(request.text);
-    this.res.end();
-  } else {
+  if(request.text.indexOf('#apod')>-1){
+    apod = new APOD({
+      key: 'FPEarLkn8Rlt1wPk5ajUp270WX5fu2flRZvMV5ck'
+    });
+    var url;
+    var imagedata = apod.getAllData(function(body){
+      url = body.url;});
+      this.res.writeHead(200);
+      postMessage(url);
+      this.res.end();
+  }
+  else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
@@ -22,7 +29,7 @@ function respond() {
 function postMessage(message) {
   var botResponse, options, body, botReq;
 
-  botResponse = message.replace(/c/gi, 'b').replace(/mariah/gi, 'mom');
+  botResponse = message;
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
