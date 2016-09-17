@@ -19,10 +19,11 @@ function respond() {
       DATE: this.getCurrentDate() // default today
   }, function(err, data) {
       url = data.url;
-  });
       this.res.writeHead(200);
       postMessage(url);
       this.res.end();
+  });
+
   }
   else {
     console.log("don't care");
