@@ -9,7 +9,8 @@
   "dependencies": {
     "cool-ascii-faces": "~1.3.x",
     "director": "",
-    "node-apod": "^1.6.4"
+    "node-apod": "^1.6.4",
+    "request": ""
   },
   "engines": {
     "node": "4.5.0"
